@@ -16,14 +16,13 @@ export class Game extends Scene
     {
         this.camera = this.cameras.main;
         this.camera.setBackgroundColor(0x00ff00);
+        const { centerX, centerY } = this.camera;
 
-        this.background = this.add.image(512, 384, 'background');
-        this.background.setAlpha(0.5);
-
-        this.gameText = this.add.text(512, 384, 'Make something fun!\nand share it with us:\nsupport@phaser.io', {
+        this.gameText = this.add.text(centerX, centerY, 'SOME MAFCKING SHIT HAPPENS HERE', {
             fontFamily: 'Arial Black', fontSize: 38, color: '#ffffff',
             stroke: '#000000', strokeThickness: 8,
-            align: 'center'
+            align: 'center',
+            wordWrap: {width: 300, useAdvancedWrap: true}
         }).setOrigin(0.5).setDepth(100);
 
         EventBus.emit('current-scene-ready', this);
