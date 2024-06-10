@@ -14,7 +14,7 @@ const config: Phaser.Types.Core.GameConfig = {
     parent: 'game-container',
     backgroundColor: '#028af8',
     scale: {
-        mode: Phaser.Scale.FIT,
+        mode: Phaser.Scale.ScaleModes.EXPAND,
     },
     scene: [
         Boot,

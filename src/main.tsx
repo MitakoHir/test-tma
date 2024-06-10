@@ -5,8 +5,6 @@ import App from './App'
 
 WebApp.ready();
 
-WebApp.expand();
-
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App />
