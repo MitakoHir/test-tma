@@ -6,6 +6,7 @@ import { TextTimer } from '../game-objects/text-timer';
 const getScoreString = (score: number) => `Score: ${score}`;
 
 const TOP_PADDING = 60;
+const GAME_DURATION = 10;
 
 export class Game extends Scene {
     camera: Phaser.Cameras.Scene2D.Camera;
@@ -29,7 +30,7 @@ export class Game extends Scene {
         const playTimer = new TextTimer(this, TOP_PADDING, TOP_PADDING, {
             ...TEXT_STYLE,
             color: '#ff0000',
-        }, 30, () => this.changeScene()).setOrigin(1);
+        }, GAME_DURATION, () => this.changeScene()).setOrigin(1);
         this.add.existing(playTimer);
 
         this.gameText = this.add.text(centerX, centerY, 'SOME MAFCKING SHIT HAPPENS HERE', {

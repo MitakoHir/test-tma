@@ -6,6 +6,7 @@ export class TextTimer extends Phaser.GameObjects.Text {
     constructor(scene: Phaser.Scene, x: number, y: number, style: Phaser.Types.GameObjects.Text.TextStyle, timerValue: number, callback: () => void) {
         super(scene, x, y, timerValue.toString(), style);
         this.timerValue = timerValue;
+        this.callback = callback;
 
         this.timerInstance = this.scene.time.addEvent(({ delay: 1000, loop: true, callback: () => this.updateTimer() }));
     }
