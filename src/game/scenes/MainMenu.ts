@@ -2,12 +2,7 @@ import { GameObjects, Scene } from 'phaser';
 
 import { EventBus } from '../EventBus';
 import { TextButton } from '../game-objects/text-button';
-
-const TextStyle = {
-    fontFamily: 'Arial Black', fontSize: 38, color: '#ffffff',
-    stroke: '#000000', strokeThickness: 8,
-    align: 'center'
-};
+import { TEXT_STYLE } from '../../consts/styles';
 
 export class MainMenu extends Scene {
     private camera: Phaser.Cameras.Scene2D.Camera;
@@ -23,14 +18,14 @@ export class MainMenu extends Scene {
 
     create() {
         this.camera = this.cameras.main;
-        console.log('camera: ', this.camera);
         const { centerX, centerY } = this.camera;
-        this.title = this.add.text(centerX, centerY - 100, 'Main Menu', { ...TextStyle })
+
+        this.title = this.add.text(centerX, centerY - 100, 'Main Menu', { ...TEXT_STYLE })
             .setDepth(100).setOrigin(0.5);
 
-        this.button = new TextButton(this, centerX, centerY, 'Play', { ...TextStyle, color: '#00ff00' }, () => this.changeScene())
+        const textButton = new TextButton(this, centerX, centerY, 'Play', { ...TEXT_STYLE, color: '#00ff00' }, () => this.changeScene())
             .setDepth(100).setOrigin(0.5)
-        this.add.existing(this.button);
+        this.button = this.add.existing(textButton);
 
         EventBus.emit('current-scene-ready', this);
     }
